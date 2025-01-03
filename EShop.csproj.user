@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="GUI\BrandWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\CategoryWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\HomePage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\LoginWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\OrderPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\ProductModifyWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\ProductPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\ReportPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\ReportRevenuePage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GUI\ReportStockPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="GUI\BrandWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\CategoryWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\HomePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\OrderPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\ProductModifyWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\ProductPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\ReportPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\ReportRevenuePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GUI\ReportStockPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

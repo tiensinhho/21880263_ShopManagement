@@ -1,0 +1,121 @@
+﻿<Window x:Class="_21880263.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_21880263"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="{materialDesign:MaterialDesignFont}"
+        mc:Ignorable="d"
+        d:Height="450" d:Width="800"
+        Title="MainWindow" MinHeight="500" Loaded="Window_Loaded" MinWidth="800" WindowStartupLocation="CenterScreen" Closed="Window_Closed" WindowStyle="None" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60*"/>
+                <ColumnDefinition Width="509*"/>
+            </Grid.ColumnDefinitions>
+            <materialDesign:ColorZone Padding="5" Mode="Light" Width="Auto" Grid.ColumnSpan="2" VerticalAlignment="Center" MouseLeftButtonDown="TitleBoder_MouseLeftButtonDown">
+                <DockPanel Name="TitleBoder" >
+                    <Button DockPanel.Dock="Right" Name="CloseButton" Click="Close_Click" Content="{materialDesign:PackIcon Kind=Close}" Style="{DynamicResource MaterialDesignToolForegroundButton}"></Button>
+                    <Button DockPanel.Dock="Right" Name="MaximizeButton" Click="Maximize_Click" Content="{materialDesign:PackIcon Kind=Maximize}" Style="{DynamicResource MaterialDesignToolForegroundButton}"></Button>
+                    <Button DockPanel.Dock="Right" Name="MinimizeButton" Click="Minimize_Click" Content="{materialDesign:PackIcon Kind=Minimize}" Style="{DynamicResource MaterialDesignToolForegroundButton}"></Button>
+                    <materialDesign:PopupBox DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges" Name="account_popupBox"  >
+                        <materialDesign:PopupBox.PopupContent>
+                            <StackPanel>
+                                <Button Content="Logout"  Name="logoutButton" Click="logoutButton_Click"/>
+                            </StackPanel>
+                        </materialDesign:PopupBox.PopupContent>
+                        <materialDesign:PopupBox.ToggleContent>
+                            <materialDesign:Chip Content="{Binding UserID}" DockPanel.Dock="Right" Icon="A" Style="{StaticResource MaterialDesignOutlineChip}" Name="Account_Popup" Click="account_buttonClick"/>
+                        </materialDesign:PopupBox.ToggleContent>
+                    </materialDesign:PopupBox>
+                    <Label Content="Hello" Style="{StaticResource MaterialDesignLabel}" DockPanel.Dock="Right" VerticalAlignment="Center"/>
+                    <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" Margin="5 10" Grid.Row="0" Click="nav_button" Width="60"/>
+                    <Label Name="namePage" d:Content="Name page" FontSize="30" FontWeight="Bold" VerticalContentAlignment="Center" Width="200"/>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Name="searchPanel">
+                        <StackPanel.Style>
+                            <Style TargetType="StackPanel">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsChecked, ElementName=product_Button}" Value="True">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsChecked, ElementName=product_Button}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </StackPanel.Style>
+                        <materialDesign:ColorZone Margin="16,0,0,0" Padding="8,4,8,4" Panel.ZIndex="1" materialDesign:ElevationAssist.Elevation="Dp2" CornerRadius="2" Mode="Standard">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Button Style="{StaticResource MaterialDesignToolButton}">
+                                    <materialDesign:PackIcon Kind="Search" Opacity=".56" />
+                                </Button>
+                                <TextBox Grid.Column="1" MinWidth="200" Margin="8,0,0,0" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Search..." materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0" Name="searchTextbox" KeyDown="searchTextbox_KeyDown" />
+                            </Grid>
+                        </materialDesign:ColorZone>
+                        <Button Margin="8,0,0,0" Panel.ZIndex="0" Style="{StaticResource MaterialDesignToolForegroundButton}" Click="SearchButton_Click">
+                            <materialDesign:PackIcon Kind="Send" />
+                        </Button>
+                    </StackPanel>
+                </DockPanel>
+            </materialDesign:ColorZone>
+        </Grid>
+        <DockPanel Grid.Row="1">
+            <Grid VerticalAlignment="Stretch" HorizontalAlignment="Left" Grid.Row="1" DockPanel.Dock="Left" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                <RadioButton GroupName="navButton" Name="home_Button" Grid.Row="0" Style="{StaticResource MaterialDesignTabRadioButtonRight}" IsChecked="True" Padding="0" Height="80" Click="homePage_Click"  >
+                        <WrapPanel>
+                            <materialDesign:PackIcon Width="80" Height="50" Kind="HomeChart" />
+                        <Label Name="dashboardLabel" Content="Dashboard" Width="80" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Visibility="Collapsed"/>
+                        </WrapPanel>
+                    </RadioButton>
+                <RadioButton GroupName="navButton" Name="product_Button" Grid.Row="1" Style="{StaticResource MaterialDesignTabRadioButtonRight}" Padding="0" Height="80" Click="productPage_click"   >
+                        <WrapPanel>
+                            <materialDesign:PackIcon Width="80" Height="50" Kind="BoxOutline"/>
+                            <Label Name="productLabel" Content="Products" Width="80" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"  Visibility="Collapsed"/>
+                        </WrapPanel>
+                    </RadioButton>
+                <RadioButton GroupName="navButton" Name="order_Button" Grid.Row="2" Style="{StaticResource MaterialDesignTabRadioButtonRight}" Padding="0" Height="80" Click="order_Button_Click"  >
+                        <WrapPanel>
+                            <materialDesign:PackIcon Width="80" Height="50" Kind="Cart" />
+                            <Label Name="orderLabel" Content="Order" Width="80" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"  Visibility="Collapsed"/>
+                        </WrapPanel>
+                    </RadioButton>
+                <RadioButton GroupName="navButton" Name="report_Button" Grid.Row="3" Style="{StaticResource MaterialDesignTabRadioButtonRight}" Padding="0" Height="80"  Click="report_Button_Click"  >
+                        <WrapPanel>
+                            <materialDesign:PackIcon Width="80" Height="50" Kind="ChartArc" />
+                            <Label Name="reportLabel" Content="Report" Width="80" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"  Visibility="Collapsed"/>
+                        </WrapPanel>
+                    </RadioButton>
+                <!--<Button Grid.Row="1" Style="{StaticResource MaterialDesignFlatButton}" Height="80" Padding="0" Name="setting_button">
+                <WrapPanel>
+                    <materialDesign:PackIcon Width="80" Height="50" Kind="Cog" />
+                    <Label Content="Setting" Foreground="Black" FontSize="13" Width="80" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                </WrapPanel>
+            </Button>-->
+            </Grid>
+            <Frame VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Name="mainPage" NavigationUIVisibility="Hidden" Grid.Column="1" Grid.Row="1"/>
+        </DockPanel>
+        <ProgressBar IsIndeterminate="True" Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" Grid.Column="1" Grid.Row="1" Name="loadProgressbar" />
+    </Grid>
+</Window>
